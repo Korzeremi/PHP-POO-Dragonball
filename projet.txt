@@ -1,0 +1,20 @@
+Array()
+- attaques debloquables :
+	- nom
+	- nb dégat
+	- statut (debloque ou pas)
+	- pallier
+- attaques ennemis :
+	- nom
+	- dégats
+- combats :
+	- description	
+	- phase
+	- ennemi
+	- id 
+- ennemi :
+	- nom
+	- ennemi PV
+	- attaques
+
+IA pour générer attaques et noms aléatoires
