@@ -22,9 +22,12 @@
         public $UserSelection;
         public $TempSaveFile;
         public $CharaType;
-        public function __construct($UserPlace,$UserSelection) {
+        public $CharaName;
+        public function __construct($UserPlace,$UserSelection,$CharaName,$CharaType) {
             $this->UserPlace = $UserPlace;
-            $this->$UserSelection = $UserSelection;
+            $this->UserSelection = $UserSelection;
+            $this->CharaName = $CharaName;
+            $this->CharaType = $CharaType;
         }
         public function MenuManager() {
             $this->MainMenu();
@@ -169,6 +172,8 @@ ______                                                                          
                     // print tab
                     break;
                 case 2:
+                    echo "Quel est le nom du personnage ?\n";
+                    $this->CharaName = readline("> ");
                     echo "Que voulez-vous ajouter ?\n1.Héros\n2.Vilain\n";
                     $this->CharaType = readline("> ");
                     switch ($this->CharaType){
@@ -191,6 +196,6 @@ ______                                                                          
             }
         }
     }
-    $f = new Menu(0,0);
+    $f = new Menu(0,0,0,0);
     $f->MenuManager();
 ?>
