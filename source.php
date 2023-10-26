@@ -1,12 +1,20 @@
 <?php
 //here we created a class perso where we define the caracteristics of the characters
     class Perso {
-        public $Pv =array();
-        public $PersoState = 0;
-        public $MainAttack = array();
+        public $PersoId;
+        public $PersoPv;
+        public $PersoInfos;
+        public $PersoPower;
+        public $PersoAttack;
+        public $PersoState = 0; // débloqué ou non
 
-        function __construct($Pv) {
-            $this->Pv = $Pv;
+        function __construct($Pv,$PersoId,$PersoPv,$PersoInfos,$PersoPower,$PersoAttack,$PersoState) {
+            $this->PersoId = $PersoId;
+            $this->PersoPv = $PersoPv;
+            $this->PersoInfos = $PersoInfos;
+            $this->PersoAttack = $PersoAttack;
+            $this->PersoPower = $PersoPower;
+            $this->PersoState = $PersoState;
         }
 
     }
@@ -34,9 +42,7 @@
 
 
         
-        
-      
-
+    
           
     }
 // here we created a class vilain where we define the caracteristics of the vilains
