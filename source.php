@@ -25,6 +25,10 @@
         public $HeroInfos = array("goku","vegeta","piccolo");
         public $HeroPower = array(23,14,10);
         public $HeroAttack = array("kamehameha","finalflash","makankosappo"); // attaque spéciale
+        public $SpecialAttackDamage = array(100,80,60); // dégats de l'attaque spéciale
+        public $AttackBlock = array("kaioken","finalflash","makankosappo");
+        public $attackBlockDamage = array(50,40,30);
+
 
         public function __construct($HeroId,$HeroPv,$HeroInfos,$HeroPower,$HeroAttack) {
             $this->HeroId = $HeroId;
@@ -43,10 +47,13 @@
 // here we created a class vilain where we define the caracteristics of the vilains
     class Vilain extends Perso {
         public $VilainId;
-        public $VilainPv = array();
-        public $VilainAttack = array();
-        public $VilainInfos = array("freeazer","cell","Magin buu");
-        public $VilainPower= array("400","333","250");
+        public $VilainPv = array(503,233,350);
+        public $VilainInfos = array("freeazer","cell","Magin buu");  
+        public $VilanAttack = array("deathball","kamehameha","finalflash");     // attaque spéciale
+        public $VilanSpecialAttackDammage = array(100,80,60); // dégats de l'attaque spéciale
+        public $VilainPower= array(26,17,12); // puissance de l'attaque spéciale
+        public $VilainAttackBloque = array("key blast","absorption","vaporize");
+        public $VilainAttackBloqueDammage = array(50,40,70);
 
         public function __construct($VilainId,$VilainPv,$VilainAttack,$VilainInfos,$VilainPower) {
             $this->VilainId = $VilainId;
