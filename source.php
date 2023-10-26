@@ -25,13 +25,16 @@
         public $HeroInfos = array("goku","vegeta","piccolo");
         public $HeroPower = array(23,14,10);
         public $HeroAttack = array("kamehameha","finalflash","makankosappo"); // attaque spéciale
-
+        public $SpecialAttackDammage = array(100,80,60); // dégats de l'attaque spéciale
+        public $attackBloque = array("kaioken","finalflash","makankosappo");
+        public $attackBloqueDammage = array(50,40,30);
         public function __construct($HeroId,$HeroPv,$HeroInfos,$HeroPower,$HeroAttack) {
             $this->HeroId = $HeroId;
             $this->HeroPv = $HeroPv; 
             $this->HeroInfos = $HeroInfos;     
             $this->HeroPower = $HeroPower; 
             $this->HeroAttack = $HeroAttack;
+
         }
 
         // here we created a function that allows us to define the pv of the heroes 
@@ -46,12 +49,15 @@
 // here we created a class vilain where we define the caracteristics of the vilains
     class Vilain extends Perso {
         public $VilainId;
-        public $VilainPv = array();
-        public $VilainAttack = array();
-        public $VilainInfos = array("freeazer","cell","Magin buu");
-        public $VilainPower= array("400","333","250");
+        public $VilainPv = array(503,233,350);
+        public $VilainInfos = array("freeazer","cell","Magin buu");  
+        public $VilanAttack = array("deathball","kamehameha","finalflash");     // attaque spéciale
+        public $VilanSpecialAttackDammage = array(100,80,60); // dégats de l'attaque spéciale
+        public $VilainPower= array(26,17,12); // puissance de l'attaque spéciale
+        public $VilainAttackBloque = array("key blast","absorption","vaporize");
+        public $VilainAttackBloqueDammage = array(50,40,70);
 
-        public function __construct($VilainId,$VilainPv,$VilainAttack,$VilainInfos,$VilainPower) {
+        public function __construct($VilainId,$VilainPv,$VilainAttack,$VilainInfos,$VilainPower) { // constructeur
             $this->VilainId = $VilainId;
             $this->VilainPv = $VilainPv;
             $this->VilainAttack = $VilainAttack;
@@ -62,7 +68,6 @@
 
 // here we created a class combat where we define the caracteristics of the combat
     class combat {
-        public $attackBloque = array("kaioken","finalflash","makankosappo");
        
     }
 
