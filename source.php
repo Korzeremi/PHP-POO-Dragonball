@@ -18,57 +18,173 @@
         }
 
     }
+
+
+
+
+
 // here we created a class hero where we define the caracteristics of the heroes
     class Hero extends Perso {
-        public $HeroId;
+        public $HeroId = 0;
         public $HeroPv = array(400,333,250);
         public $HeroInfos = array("goku","vegeta","piccolo");
         public $HeroPower = array(23,14,10);
         public $HeroAttack = array("kamehameha","finalflash","makankosappo"); // attaque spéciale
         public $SpecialAttackDamage = array(100,80,60); // dégats de l'attaque spéciale
         public $AttackBlock = array("kaioken","finalflash","makankosappo");
-        public $attackBlockDamage = array(50,40,30);
+        public $AttackBlockDamage = array(50,40,30);
 
 
-        public function __construct($HeroId,$HeroPv,$HeroInfos,$HeroPower,$HeroAttack) {
+        public function __construct($HeroId,$HeroPv,$HeroInfos,$HeroPower,$HeroAttack,$SpecialAttackDamage,$AttackBlock,$AttackBlockDamage) {
             $this->HeroId = $HeroId;
-            $this->HeroPv = $HeroPv; 
-            $this->HeroInfos = $HeroInfos;     
-            $this->HeroPower = $HeroPower; 
+            $this->HeroPv = $HeroPv;
+            $this->HeroInfos = $HeroInfos;
+            $this->HeroPower = $HeroPower;
             $this->HeroAttack = $HeroAttack;
+            $this->SpecialAttackDamage = $SpecialAttackDamage;
+            $this->AttackBlock = $AttackBlock;
+            $this->AttackBlockDamage = $AttackBlockDamage;
         }
 
-        // here we created a function that allows us to define the pv of the heroes 
-        function Pv() {
-            // $this->pv = $this->heroPv;
-            array_push($this->PersoPv, $this->HeroPv);
-        }      
+        public function getHeroId() {
+            return $this->HeroId;
+        }
+        public function getHeroPv() {
+            return $this->HeroPv;
+        }
+        public function getHeroInfos() {
+            return $this->HeroInfos;
+        }
+        public function getHeroPower() {
+            return $this->HeroPower;
+        }
+        public function getHeroAttack() {
+            return $this->HeroAttack;
+        }
+        public function getSpecialAttackDamage() {
+            return $this->SpecialAttackDamage;
+        }
+        public function getAttackBlock() {
+            return $this->AttackBlock;
+        }
+        public function getAttackBlockDamage() {
+            return $this->AttackBlockDamage;
+        }
+        public function setHeroId($Heroid) {
+            $this->HeroId = $Heroid;
+        }
+        public function setHeroPv($HeroPv) {
+            $this->HeroPv = $HeroPv;
+        }
+        public function setHeroInfos ($HeroInfos) {
+            $this->HeroInfos = $HeroInfos;
+        }
+        public function setHeroPower($HeroPower) {
+            $this->HeroPower = $HeroPower;
+        }
+        public function setHeroAttack($HeroAttack) {
+            $this->HeroAttack = $HeroAttack;
+        }
+        public function setSpecialAttackDamage($SpecialAttackDamage) {
+            $this->SpecialAttackDamage = $SpecialAttackDamage;
+        }
+        public function setAttackBlock($AttackBlock) {
+            $this->AttackBlock = $AttackBlock;
+        }
+        public function setAttackBlockDamage($AttackBlockDamage) {
+            $this->AttackBlockDamage = $AttackBlockDamage;
+        }
     }
+
+
+
+
+
 // here we created a class vilain where we define the caracteristics of the vilains
     class Vilain extends Perso {
         public $VilainId;
         public $VilainPv = array(503,233,350);
         public $VilainInfos = array("freeazer","cell","Magin buu");  
-        public $VilanAttack = array("deathball","kamehameha","finalflash");     // attaque spéciale
-        public $VilanSpecialAttackDammage = array(100,80,60); // dégats de l'attaque spéciale
+        public $VilainAttack = array("deathball","kamehameha","finalflash");     // attaque spéciale
+        public $VilainSpecialAttackDamage = array(100,80,60); // dégats de l'attaque spéciale
         public $VilainPower= array(26,17,12); // puissance de l'attaque spéciale
         public $VilainAttackBloque = array("key blast","absorption","vaporize");
-        public $VilainAttackBloqueDammage = array(50,40,70);
+        public $VilainAttackBloqueDamage = array(50,40,70);
 
-        public function __construct($VilainId,$VilainPv,$VilainAttack,$VilainInfos,$VilainPower) {
+        public function __construct($VilainId,$VilainPv,$VilainAttack,$VilainInfos,$VilainPower,$VilainSpecialAttackDamage,$VilainAttackBloque,$VilainAttackBloqueDamage) {
             $this->VilainId = $VilainId;
             $this->VilainPv = $VilainPv;
             $this->VilainAttack = $VilainAttack;
             $this->VilainInfos = $VilainInfos;
+            $this->VilainPower= $VilainPower;
+            $this->VilainSpecialAttackDamage = $VilainSpecialAttackDamage;
+            $this->VilainAttackBloque = $VilainAttackBloque;
+            $this->VilainAttackBloqueDamage = $VilainAttackBloqueDamage;
+        }
+
+        public function getVilainId() {
+            return $this->VilainId;
+        }
+        public function getVilainPv() {
+            return $this->VilainPv;
+        }
+        public function getVilainAttack() {
+            return $this->VilainAttack;
+        }
+        public function getVilainInfos() {
+            return $this->VilainInfos;
+        }
+        public function getVilainPower() {
+            return $this->VilainPower;
+        }
+        public function getVilainSpecialAttackDamage() {
+            return $this->VilainSpecialAttackDamage;
+        }
+        public function getVilainAttackBloque() {
+            return $this->VilainAttackBloque;
+        }
+        public function getVilainAttackBloqueDamage() {
+            return $this->VilainAttackBloqueDamage;
+        }
+
+        public function setVilainId($VilainId) {
+            $this->VilainId = $VilainId;
+        }
+        public function setVilainPv($VilainPv) {
+            $this->VilainPv = $VilainPv;
+        }
+        public function setVilainAttack($VilainAttack) {
+            $this->VilainAttack = $VilainAttack;
+        }
+        public function setVilainInfos($VilainInfos) {
+            $this->VilainInfos = $VilainInfos;
+        }
+        public function setVilainPower($VilainPower) {
             $this->VilainPower = $VilainPower;
         }
+        public function setVilainSpecialAttackDamage($VilainSpecialAttackDamage) {
+            $this->VilainSpecialAttackDamage = $VilainSpecialAttackDamage;
+        }
+        public function setVilainAttackBloque($VilainAttackBloque) {
+            $this->VilainAttackBloque = $VilainAttackBloque;
+        }
+        public function setVilainAttackBloqueDamage($VilainAttackBloqueDamage) {
+            $this->VilainAttackBloqueDamage = $VilainAttackBloqueDamage;
+        }
     }
-    class Menu extends Perso {
+
+
+
+
+
+
+    class Menu extends Vilain {
         public $UserPlace;
         public $UserSelection;
         public $TempSaveFile;
         public $CharaType;
         public $CharaSelection;
+        public $HeroC;
         public function __construct($UserPlace,$UserSelection,$CharaSelection) {
             $this->UserPlace = $UserPlace;
             $this->UserSelection = $UserSelection;
@@ -101,6 +217,7 @@ ______                                   ______         _  _
                     // popen("powershell .\music.ps1","w");
                     break;
                 case 1:
+                    $this->PlaySelection();
                     $this->PlayMenu();
                 case 2:
                     $this->CharaMenu();
@@ -132,7 +249,7 @@ ______                                   ______         _  _
             }
         }
         public function PlayHero() {
-            count($this->H)
+            
         }
         public function PlayMenu() {
             popen("cls","w");
@@ -254,6 +371,6 @@ ______                                                                          
             }
         }
     }
-    $f = new Menu(0,0);
+    $f = new Menu(0,0,0,0);
     $f->MenuManager();
 ?>
