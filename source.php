@@ -56,19 +56,16 @@
             $this->VilainPower = $VilainPower;
         }
     }
-// here we created a class combat where we define the caracteristics of the combat
-    class combat {
-        public $attackBloque = array("kaioken","finalflash","makankosappo");
-       
-    }
-    class Menu {
+    class Menu extends Perso {
         public $UserPlace;
         public $UserSelection;
         public $TempSaveFile;
         public $CharaType;
-        public function __construct($UserPlace,$UserSelection) {
+        public $CharaSelection;
+        public function __construct($UserPlace,$UserSelection,$CharaSelection) {
             $this->UserPlace = $UserPlace;
-            $this->$UserSelection = $UserSelection;
+            $this->UserSelection = $UserSelection;
+            $this->CharaSelection = $CharaSelection;
         }
         public function MenuManager() {
             $this->MainMenu();
@@ -114,6 +111,21 @@ ______                                   ______         _  _
                     $pass = readline("> ");
                     $this->MainMenu();
             }
+        }
+        public function PlaySelection() {
+            popen("cls","w");
+            echo "Voulez-vous incarner les héros ou les vilains ?\n1.Héros\n2.Vilain\n";
+            $this->CharaSelection = readline("");
+            switch ($this->CharaSelection) {
+                case 1:
+                    $this->PlayHero();
+                    break;
+                case 2:
+                    //Vilain
+            }
+        }
+        public function PlayHero() {
+            count($this->H)
         }
         public function PlayMenu() {
             popen("cls","w");
