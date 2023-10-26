@@ -178,7 +178,9 @@
 
 
 
-    class Menu extends Vilain {
+    class Menu extends Perso {
+        private $Hero;
+        private $Vilain;
         public $UserPlace;
         public $UserSelection;
         public $TempSaveFile;
@@ -189,6 +191,8 @@
             $this->UserPlace = $UserPlace;
             $this->UserSelection = $UserSelection;
             $this->CharaSelection = $CharaSelection;
+            $this->Hero = new Hero(0,0,0,0,0,0,0,0);
+            $this->Vilain = new Vilain(0,0,0,0,0,0,0,0);
         }
         public function MenuManager() {
             $this->MainMenu();
@@ -214,7 +218,9 @@ ______                                   ______         _  _
             $this->UserSelection = readline("> ");
             switch ($this->UserSelection){
                 case 0:
-                    // popen("powershell .\music.ps1","w");
+                    $hero = new Hero(0,0,0,0,0,0,0,0);
+                    $heroInfo = $hero->getHeroInfos();
+                    
                     break;
                 case 1:
                     $this->PlaySelection();
