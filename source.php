@@ -263,9 +263,10 @@
                                          |___/                                                                          
                     
 
-                                            1. Jouer
+                                            1. Nouveau jeu
                                             2. BDD
-                                            3. Quitter            
+                                            3. Charger Sauvegarde 
+                                            4. Quitter
                                             
                     ";
                     break;
@@ -773,7 +774,20 @@
                     $this->Input();
                     $this->BddMenu();
                     break;
+                case 3:
+                    $this->CleanCmd();
+                    $this->Load();
+                    $this->Player();
             }
+        }
+
+        public function Load() {
+            $this->PlayerTempSaveFile = fopen("PlayerTempSaveFile.txt", "r");
+            $this->PlayerInfos = fgets($this->PlayerTempSaveFile);
+            $this->PlayerHp = fgets($this->PlayerTempSaveFile);
+            $this->PlayerLevel = fgets($this->PlayerTempSaveFile);
+            $this->PlayerId = fgets($this->PlayerTempSaveFile);
+            fclose($this->PlayerTempSaveFile);
         }
         // here we create the function that will start the game  
         public function BddMenu() {
