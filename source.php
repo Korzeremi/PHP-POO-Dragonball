@@ -148,7 +148,24 @@
                 'CharaBlockDamage' => 25,
                 'CharaLevel' => 1,
             ),
-            
+            array('CharaId' => 9,
+            'CharaTypeState' => "v",
+            'CharaInfos' => "Black Goku",
+            'CharaHp' => 125,
+            'CharaAttack' => "Attack",
+            'CharaAttackDamage' => 30,
+            'CharaSpecAttack' => "SpecialAttack",
+            'CharaSpecAttackDamage' => 75,
+            'CharaBlock' => "Defence",
+            'CharaBlockDamage' => 25,
+            'CharaLevel' => 1,
+            ),
+            array('CharaId' => 10,
+            'CharaTypeState' => "h",
+            'CharaInfos' => "zeno",
+            )
+            )    
+
             
 
             
@@ -156,7 +173,7 @@
                 
 
             
-        );
+        ;
         public $CharaId;
         public $CharaHp;
         public $CharaLevel;
@@ -568,6 +585,26 @@
                     break;
             }
         }
+        public function Sauvegarde() {
+            fwrite($this->PlayerTempSaveFile,$this->PlayerInfos,$this->PlayerHp,$this->PlayerLevel,$this->PlayerAttack,$this->PlayerAttackDamage);
+            fclose($this->PlayerTempSaveFile);
+            $this->PlayerTempSaveFile = fopen("PlayerTempSaveFile.txt","w");
+            
+
+        }
+        //cette fonction permet de ajoute un personnage de du fichier file.txt dans la bdd quand ton ennemie est mort
+        public function AddCharaBdd() {
+            $this->CharaBdd = array();
+            // here we add the character in the bdd
+            $this->CharaBdd[] = file_get_contents('file.txt');
+
+    
+
+           
+
+        
+
+        }
     }
 
 
@@ -576,3 +613,5 @@
 
     $Game = new MenuManager();
     $Game->Engine();
+    $Game->AddCharaBdd();
+    $Game->Sauvegarde();
