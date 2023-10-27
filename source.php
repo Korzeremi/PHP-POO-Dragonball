@@ -10,7 +10,7 @@
                 'CharaId' => 0,
                 'CharaTypeState' => "h",
                 'CharaInfos' => "Goku",
-                'CharaHp' => 100,
+                'CharaHp' => 1000,
                 'CharaAttack' => "Attack",
                 'CharaAttackDamage' => 250,
                 'CharaSpecAttack' => "SpecialAttack",
@@ -23,7 +23,7 @@
                 'CharaId' => 1,
                 'CharaTypeState' => "h",
                 'CharaInfos' => "Goku2",
-                'CharaHp' => 100,
+                'CharaHp' => 1000,
                 'CharaAttack' => "Attack",
                 'CharaAttackDamage' => 250,
                 'CharaSpecAttack' => "SpecialAttack",
@@ -36,7 +36,7 @@
                 'CharaId' => 0,
                 'CharaTypeState' => "v",
                 'CharaInfos' => "Vegeta",
-                'CharaHp' => 125,
+                'CharaHp' => 1250,
                 'CharaAttack' => "Attack",
                 'CharaAttackDamage' => 300,
                 'CharaSpecAttack' => "SpecialAttack",
@@ -49,7 +49,7 @@
                 'CharaId' => 1,
                 'CharaTypeState' => "v",
                 'CharaInfos' => "Vegeto",
-                'CharaHp' => 125,
+                'CharaHp' => 1250,
                 'CharaAttack' => "Attack",
                 'CharaAttackDamage' => 300,
                 'CharaSpecAttack' => "SpecialAttack",
@@ -62,7 +62,7 @@
                 'CharaId' => 2,
                 'CharaTypeState' => "v",
                 'CharaInfos' => "Vegeti",
-                'CharaHp' => 125,
+                'CharaHp' => 1250,
                 'CharaAttack' => "Attack",
                 'CharaAttackDamage' => 300,
                 'CharaSpecAttack' => "SpecialAttack",
@@ -188,6 +188,7 @@
         public $PlayerSpecAttackDamage;
         public $PlayerBlock;
         public $PlayerBlockDamage;
+        public $PlayerBlockState = 0;
         public $EnemyLevel;
         public $EnemyId;
         public $EnemyMainId;
@@ -195,12 +196,13 @@
         public $EnemyInfos;
         public $EnemyType;
         public $EnemyAttack;
-        
+        public $EnemyChoice;
         public $EnemyAttackDamage;
         public $EnemySpecAttack;
         public $EnemySpecAttackDamage;
         public $EnemyBlock;
         public $EnemyBlockDamage;
+        public $EnemyBlockState = 0;
         public $BddVilainNb;
         public $BddVilainNbArray = array();
         public $BddHeroNbArray = array();
@@ -384,11 +386,70 @@
                 $this->Pass();
         }
         public function Enemy() {
-            $EnemyChoice 
+            $this->EnemyChoice = rand(0,2);
+            $this->CleanCmd();
+            switch ($this->EnemyChoice) {
+                case 0:
+                    if ($this->PlayerBlockState = 0) {
+                        $this->EnemyBlockState = 0;
+                        echo $this->EnemyInfos . " vous attaque avec " . $this->EnemyAttack . " et vous inflige " . $this->EnemyAttackDamage . " points de dégats.\n";
+                        $this->PlayerHp = $this->PlayerHp - $this->PlayerAttackDamage;
+                        if ($this->PlayerHp <= 0) {
+                            $this->PlayerDie();
+                        }
+                    } elseif ($this->PlayerBlockState = 1) {
+                        echo $this->EnemyInfos . " a essayé de vous attaquer mais vous l'avez évité !";
+                        $this->PlayerBlockState = 0;
+                    }
+                    break;
+                case 1:
+                    echo $this->EnemyInfos . " utilise la défense " . $this->EnemyBlock . " lors du prochain tour !";
+                    $this->EnemyBlockState = 1;
+                    break;
+                case 2:
+                    $this->EnemyBlockState = 0;
+                    echo $this->PlayerInfos . " ne fait rien et passe son tour";
+                    break;
+            }
+        }
+        public function Player() {
+            $this->CleanCmd();
+            echo "Que voulez-vous faire ? \n";
+            echo "1. Attaque normale\n2. Attaque spéciale\n3. Défense";
+            $PlayerChoice = readline("> ");
+            switch ($PlayerChoice) {
+                case 1:
+                    if ($this->EnemyBlockState == 0) {
+                        echo "\nVous utilisez votre attaque (" . $this->PlayerAttack . ") et infligez " . $this->PlayerAttackDamage . " points de dégats à " . $this->EnemyInfos;
+                        $this->EnemyHp = $this->EnemyHp - $this->PlayerAttackDamage;
+                    } else {
+                        echo $this->EnemyInfos . " a utilisé sa defense.";
+                        $this->EnemyBlockState = 0;
+                    }
+                    break;
+                case 2:
+                    if ($this->EnemyBlockState == 0) {
+                        echo "\nVous utilisez votre attaque spéciale (" . $this->PlayerSpecAttack . ") et infligez " . $this->PlayerSpecAttackDamage . " points de dégats à " . $this->EnemyInfos;
+                        $this->EnemyHp = $this->EnemyHp - $this->PlayerSpecAttackDamage;
+                    } else {
+                        echo $this->EnemyInfos . " a utilisé sa defense.";
+                        $this->EnemyBlockState = 0;
+                    }
+                    break;
+                case 3:
+                    $this->PlayerBlockState = 1;
+                    break;
+            }
+            $this->Pass();
         }
         public function VilainFightEngine() {
             switch ($this->LuckId) {
                 case 0:
+                    while ($this->PlayerHp >= 0) {
+                        $this->Player();
+                        $this->CleanCmd();
+                        $this->Enemy();
+                    }
                     break;
                 case 1:
                     while ($this->PlayerHp >= 0) {
@@ -402,7 +463,7 @@
                             $this->EnemyIntro();
                         } else {
                             $this->CleanCmd();
-
+                            $this->Enemy();
                         }
                         break;
                     }
@@ -411,6 +472,11 @@
         public function HeroFightEngine() {
             switch ($this->LuckId) {
                 case 0:
+                    while ($this->PlayerHp >= 0) {
+                        $this->Player();
+                        $this->CleanCmd();
+                        $this->Enemy();
+                    }
                     break;
                 case 1:
                     while ($this->PlayerHp >= 0) {
@@ -423,11 +489,17 @@
                             $this->ReceiveEnemyInfos();
                             $this->EnemyIntro();
                         } else {
-                            
+                            $this->CleanCmd();
+                            $this->Enemy();
                         }
                         break;
                     }
                 }
+        }
+        public function PlayerDie() {
+            $this->CleanCmd();
+            echo "VOUS ÊTES MORT !";
+            $this->Pass();
         }
         }
     
