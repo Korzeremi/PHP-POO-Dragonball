@@ -70,7 +70,92 @@
                 'CharaBlock' => "Defence",
                 'CharaBlockDamage' => 25,
                 'CharaLevel' => 1,
-            )
+            ),
+            array(
+                'CharaId' => 3,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Cell",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,),
+            array(
+                'CharaId' => 4,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Buu",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 5,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Broly",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 6,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Beerus",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 7,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Jiren",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 8,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Zamasu",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            ),
+            
+            
+
+            
+
+                
+
+            
         );
         public $CharaId;
         public $CharaHp;
@@ -642,6 +727,20 @@
                     break;
             }
         }
+        public function Sauvegarde() {
+            fwrite($this->PlayerTempSaveFile,$this->PlayerInfos,$this->PlayerHp,$this->PlayerLevel,$this->PlayerAttack,$this->PlayerAttackDamage);
+            fclose($this->PlayerTempSaveFile);
+            $this->PlayerTempSaveFile = fopen("PlayerTempSaveFile.txt","w");
+            
+
+        }
+        //cette fonction permet de ajoute un personnage de du fichier file.txt dans la bdd quand ton ennemie est mort
+        public function AddCharaBdd() {
+            $this->CharaBdd = array();
+            // here we add the character in the bdd
+            $this->CharaBdd[] = file_get_contents('file.txt');
+
+ }
     }
 
 
@@ -650,3 +749,5 @@
 
     $Game = new MenuManager();
     $Game->Engine();
+    $Game->AddCharaBdd();
+    $Game->Sauvegarde();
