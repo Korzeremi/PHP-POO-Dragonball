@@ -354,6 +354,14 @@
             $this->Game = new MenuManager();
         }
         // here we create the function that will start the game
+        public function Save() {
+            // here we create the function that will save the player's infos
+            $data = $this->PlayerInfos . "\n" . $this->PlayerHp . "\n" . $this->PlayerLevel . "\n" . $this->PlayerId;
+            $this->PlayerTempSaveFile = fopen("PlayerTempSaveFile.txt", "w");
+            fwrite($this->PlayerTempSaveFile, $data);
+            fclose($this->PlayerTempSaveFile);
+        }
+        // here we create the function that will start the game
         public function PlayerSelection() {
             $this->CleanCmd();
                     echo "Souhaitez-vous jouer un héros ou un vilain ? (h/v) \n";
@@ -585,7 +593,7 @@
             echo "Au tour du joueur : " . $this->PlayerInfos;
             echo "\n Vous avez " . $this->PlayerHp . " points de vie.";
             echo "\nQue voulez-vous faire ? \n";
-            echo "1. Attaque normale\n2. Attaque spéciale\n3. Défense";
+            echo "1. Attaque normale\n2. Attaque spéciale\n3. Défense\n4. Sauvegarder";
             $PlayerChoice = readline("> "); // here we get the input of the player
             switch ($PlayerChoice) { // here we have the player's actions
                 case 1:
@@ -656,6 +664,13 @@
                                 break;
                         };
                 }
+                    break;
+                case 4: // here we create the function that will save the game
+                    $this->Save(); // here we call the function that will save the game
+                    $this->CleanCmd();
+                    echo "Sauvegarde effectuée";
+                    $this->Pass();
+                    $this->Player();
                     break;
             }
         }
