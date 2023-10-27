@@ -3,7 +3,7 @@
 
     // CHARACTER ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+// here we create the class Character
     class Character {
         public $CharaBdd = array(
             array(
@@ -11,9 +11,9 @@
                 'CharaTypeState' => "h",
                 'CharaInfos' => "Goku",
                 'CharaHp' => 1000,
-                'CharaAttack' => "Attack",
+                'CharaAttack' => "kamehameha",
                 'CharaAttackDamage' => 250,
-                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttack' => "kaioken",
                 'CharaSpecAttackDamage' => 50,
                 'CharaBlock' => "Defence",
                 'CharaBlockDamage' => 50,
@@ -22,56 +22,188 @@
             array(
                 'CharaId' => 1,
                 'CharaTypeState' => "h",
-                'CharaInfos' => "Goku2",
+                'CharaInfos' => "Vegeta",
                 'CharaHp' => 1000,
-                'CharaAttack' => "Attack",
+                'CharaAttack' => "Final Flash",
                 'CharaAttackDamage' => 250,
-                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttack' => "Galick Gun",
                 'CharaSpecAttackDamage' => 50,
                 'CharaBlock' => "Defence",
                 'CharaBlockDamage' => 50,
                 'CharaLevel' => 1,
             ),
             array(
-                'CharaId' => 0,
-                'CharaTypeState' => "v",
-                'CharaInfos' => "Vegeta",
-                'CharaHp' => 1250,
-                'CharaAttack' => "Attack",
-                'CharaAttackDamage' => 300,
-                'CharaSpecAttack' => "SpecialAttack",
-                'CharaSpecAttackDamage' => 75,
-                'CharaBlock' => "Defence",
-                'CharaBlockDamage' => 25,
-                'CharaLevel' => 1,
-            ),
-            array(
-                'CharaId' => 1,
-                'CharaTypeState' => "v",
-                'CharaInfos' => "Vegeto",
-                'CharaHp' => 1250,
-                'CharaAttack' => "Attack",
-                'CharaAttackDamage' => 300,
-                'CharaSpecAttack' => "SpecialAttack",
-                'CharaSpecAttackDamage' => 75,
-                'CharaBlock' => "Defence",
-                'CharaBlockDamage' => 25,
-                'CharaLevel' => 1,
-            ),
-            array(
                 'CharaId' => 2,
-                'CharaTypeState' => "v",
-                'CharaInfos' => "Vegeti",
-                'CharaHp' => 1250,
-                'CharaAttack' => "Attack",
-                'CharaAttackDamage' => 300,
-                'CharaSpecAttack' => "SpecialAttack",
-                'CharaSpecAttackDamage' => 75,
+                'CharaTypeState' => "h",
+                'CharaInfos' => "Gohan",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Masenko",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Kamehameha",
+                'CharaSpecAttackDamage' => 50,
                 'CharaBlock' => "Defence",
-                'CharaBlockDamage' => 25,
+                'CharaBlockDamage' => 50,
                 'CharaLevel' => 1,
-            )
-        );
+            ),
+            array(
+                'CharaId' => 3,
+                'CharaTypeState' => "h",
+                'CharaInfos' => "Trunks",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Burning Attack",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Final Flash",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 4,
+                'CharaTypeState' => "h",
+                'CharaInfos' => "Piccolo",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Makankosappo",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Special Beam Cannon",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 5,
+                'CharaTypeState' => "h",
+                'CharaInfos' => "Krillin",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Destructo Disk",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Kamehameha",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 6,
+                'CharaTypeState' => "h",
+                'CharaInfos' => "Yamcha",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Wolf Fang Fist",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Spirit Ball",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'charaId' => 7,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Freezer",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Death Beam",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Death Ball",
+
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+            array(
+                'CharaId' => 8,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Cell",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Kamehameha",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Solar Kamehameha",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+            array(
+                'CharaId' => 9,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Buu",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Kamehameha",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Super Kamehameha",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+            array(
+                'CharaId' => 10,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Broly",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Omega Blaster",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Gigantic Meteor",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+            array(
+                'CharaId' => 11,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Beerus",
+                'CharaHp' => 1000,
+                'CharaAttack' => "God of Destruction's Rampage",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Sphere of Destruction",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+            array(
+                'CharaId' => 12,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Jiren",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Power Impact",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Power Impact",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+            array(
+                'CharaId' => 13,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Zamasu",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Divine Wrath: Purification",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Divine Wrath: Purification",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+            array(
+                'CharaId' => 14,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Hit",
+                'CharaHp' => 1000,
+                'CharaAttack' => "Time Skip/Molotov",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "Time Skip/Molotov",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 2,
+            ),
+                        );
+        // here we create the variables of the class Character
         public $CharaId;
         public $CharaHp;
         public $CharaLevel;
@@ -92,7 +224,7 @@
 
     // DISPLAYENGINE -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+// here we create the class DisplayEngine
     class DisplayEngine extends Character {
         public $AsciiType = 1;
         public $AsciiReg;
@@ -159,6 +291,7 @@
                     break;
             }
         }
+        // here we create the function that will display the ascii art
         public function Pass() {
             $Pass = strtolower(readline(""));
         }
@@ -173,7 +306,7 @@
 
     // GAMEENGINE ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+// here we create the class GameEngine
     class GameEngine extends DisplayEngine {
         public $Game;
         public $PlayerTempSaveFile;
@@ -220,6 +353,7 @@
         public function __construct($Game) {
             $this->Game = new MenuManager();
         }
+        // here we create the function that will start the game
         public function PlayerSelection() {
             $this->CleanCmd();
                     echo "Souhaitez-vous jouer un héros ou un vilain ? (h/v) \n";
@@ -250,8 +384,9 @@
                             break;
                     }
         }
+        // here we create the function that will start the game
         public function HeroSpawner() {
-            foreach ($this->BddHero as $element) {
+            foreach ($this->BddHero as $element) { // here we create an array with all the id of the heroes
                 $Nb = $element['CharaId'];
                 array_push($this->BddHeroNbArray,$Nb);
             }
@@ -263,6 +398,7 @@
             $this->ReceiveEnemyInfos();
             $this->EnemyIntro();
         }
+        // here we create the function that will start the game
         public function VilainSpawner() {
             foreach ($this->BddVilain as $element) {
                 $Nb = $element['CharaId'];
@@ -276,12 +412,12 @@
             $this->ReceiveEnemyInfos();
             $this->EnemyIntro();
         }
-        public function EnemyIntro() {
+        public function EnemyIntro() { // here we create the function that will display the enemy's infos
             $this->CleanCmd();
             echo $this->EnemyInfos . " vient d'apparaitre !";
             $this->Pass();
         }
-        public function ReceivePlayerInfos() {
+        public function ReceivePlayerInfos() { // here we create the function that will receive the player's infos
             foreach ($this->CurrentPlayerChara as $element) {
                 $this->PlayerLevel = $element['CharaLevel'];
                 $this->PlayerId = $element['CharaId'];
@@ -295,7 +431,7 @@
                 $this->PlayerBlock = $element['CharaBlock'];
                 $this->PlayerBlockDamage = $element['CharaBlockDamage'];
             }
-        }
+        }// here we create the function that will receive the enemy's infos
         public function ReceiveEnemyInfos() {
             foreach ($this->CurrentEnemyChara as $element2) {
                 $this->EnemyLevel = $element2['CharaLevel'];
@@ -312,7 +448,7 @@
                 $this->EnemyBlockDamage = $element2['CharaBlockDamage'];
             }
 
-        }
+        }// here we create the function that will display the player's infos
         public function HeroPlayer() {
             $this->ReceivePlayerInfos();
             echo "Vous jouer " . $this->PlayerInfos . ", disposant de " . $this->PlayerHp . " points de vie (HP).\n";
@@ -321,12 +457,12 @@
             echo "Sa defense est " . $this->PlayerBlock . " qui effectuera " . $this->PlayerBlockDamage . " points de dégats en contrepartie\n";
             echo "Votre personnage est actuellement au niveau " . $this->PlayerLevel . ".\nBattez des ennemies et des boss pour obtenir des niveaux et en débloquer de nouveaux !";
             $this->Pass();
-            $RandomEnemy = rand(0,$this->BddVilainNb-1);
+            $RandomEnemy = rand(0,$this->BddVilainNb-1); // here we create a random number to select a random enemy in the array of enemies (BddVilain) 
             $this->CurrentEnemyChara[] = $this->BddVilain[$RandomEnemy];
             $this->ReceiveEnemyInfos();
             $this->EnemyIntro();
             $LuckNb = rand(0,1);
-            switch ($LuckNb) {
+            switch ($LuckNb) { // here we create a random number to select a random action for the enemy 
                 case 0:
                     $this->LuckId = 0;
                     $this->CleanCmd();
@@ -355,20 +491,20 @@
                 }
                 $this->Pass();
         }
-        public function VilainPlayer() {
-            $this->ReceivePlayerInfos();
+        public function VilainPlayer() { // here we create the function that will display the player's infos
+            $this->ReceivePlayerInfos(); // here we call the function that will receive the player's infos
             echo "Vous jouer " . $this->PlayerInfos . ", disposant de " . $this->PlayerHp . " points de vie (HP).\n";
             echo "Son attaque principale est " . $this->PlayerAttack . " qui effectuera " . $this->PlayerAttackDamage . " points de dégats\n";
             echo "Son attaque spéciale est " . $this->PlayerSpecAttack . " qui effectuera " . $this->PlayerSpecAttackDamage . " points de dégats\n";
             echo "Sa defense est " . $this->PlayerBlock . " qui effectuera " . $this->PlayerBlockDamage . " points de dégats en contrepartie\n";
             echo "Votre personnage est actuellement au niveau " . $this->PlayerLevel . ".\nBattez des ennemies et des boss pour obtenir des niveaux et en débloquer de nouveaux !";
             $this->Pass();
-            $RandomEnemy = rand(0,$this->BddHeroNb-1);
-            $this->CurrentEnemyChara[] = $this->BddHero[$RandomEnemy];
+            $RandomEnemy = rand(0,$this->BddHeroNb-1); // here we create a random number to select a random enemy in the array of enemies (BddVilain)
+            $this->CurrentEnemyChara[] = $this->BddHero[$RandomEnemy];// here we call the function that will receive the enemy's infos
             $this->ReceiveEnemyInfos();
             $this->EnemyIntro();
             $LuckNb = rand(0,1);
-            switch ($LuckNb) {
+            switch ($LuckNb) {// here we create a random number to select a random action for the enemy 
                 case 0:
                     $this->LuckId = 0;
                     $this->CleanCmd();
@@ -397,7 +533,7 @@
                 }
                 $this->Pass();
         }
-        public function Enemy() {
+        public function Enemy() { // here we create the function that will display the enemy's infos
             $this->EnemyChoice = rand(0,2);
             $this->CleanCmd();
             echo "Au tour de l'ennemi : " . $this->EnemyInfos . "\nIl a " . $this->EnemyHp . " points de vie.\n";
@@ -407,11 +543,11 @@
                     if ($this->PlayerHp <= 0) {
                         $this->PlayerDie();
                     } elseif ($this->PlayerBlockState === 0) {
-                        $this->EnemyBlockState = 0;
+                        $this->EnemyBlockState = 0; // here we create a variable that will be used to know if the enemy is blocking or not
                         echo $this->EnemyInfos . " vous attaque avec " . $this->EnemyAttack . " et vous inflige " . $this->EnemyAttackDamage . " points de dégats.\n";
                         $this->Pass();
                         $this->PlayerHp = $this->PlayerHp - $this->PlayerAttackDamage;
-                        $this->Player();
+                        $this->Player();    // here we call the function that will display the player's infos
                     } elseif ($this->PlayerBlockState === 1) {
                         echo $this->EnemyInfos . " a essayé de vous attaquer mais vous l'avez évité !";
                         $this->Pass();
@@ -441,11 +577,11 @@
                     break;
             }
         }
-        public function Player() {
+        public function Player() { // here we create the function that will display the player's infos
             if($this->PlayerHp <= 0){
                 $this->PlayerDie();
             }
-            $this->CleanCmd();
+            $this->CleanCmd(); // here we call the function that will clean the cmd
             echo "Au tour du joueur : " . $this->PlayerInfos;
             echo "\n Vous avez " . $this->PlayerHp . " points de vie.";
             echo "\nQue voulez-vous faire ? \n";
@@ -453,15 +589,15 @@
             $PlayerChoice = readline("> "); // here we get the input of the player
             switch ($PlayerChoice) { // here we have the player's actions
                 case 1:
-                    $this->PlayerBlockState = 0;
+                    $this->PlayerBlockState = 0; // here we create a variable that will be used to know if the player is blocking or not
                     if ($this->EnemyBlockState == 0) {
                         echo "\nVous utilisez votre attaque (" . $this->PlayerAttack . ") et infligez " . $this->PlayerAttackDamage . " points de dégats à " . $this->EnemyInfos;
                         $this->EnemyHpF = $this->EnemyHp - $this->PlayerAttackDamage;
                         $this->EnemyHp = $this->EnemyHpF;
                         $this->Pass();
-                        if ($this->EnemyHp > 0) {
+                        if ($this->EnemyHp > 0) { // here we create a condition that will check if the enemy is dead or not
                             $this->Enemy();
-                        } elseif ($this->EnemyHp <= 0){
+                        } elseif ($this->EnemyHp <= 0){     // here we create a condition that will check if the enemy is dead or not
                             switch ($this->PlayerFinalType) {
                                 case "h":
                                     $this->VilainSpawner();
@@ -471,7 +607,7 @@
                                     break;
                             };
                         }
-                    } elseif ($this->EnemyBlockState == 1) {
+                    } elseif ($this->EnemyBlockState == 1) { // here we create a condition that will check if the enemy is blocking or not
                         echo $this->EnemyInfos . " a utilisé sa defense.";
                         $this->EnemyBlockState = 0;
                         $this->Pass();
@@ -480,7 +616,7 @@
                     }
                     break;
                 case 2:
-                    $this->PlayerBlockState = 0;
+                    $this->PlayerBlockState = 0; // here we create a variable that will be used to know if the player is blocking or not
                     if ($this->EnemyBlockState == 0) {
                         echo "\nVous utilisez votre attaque spéciale (" . $this->PlayerSpecAttack . ") et infligez " . $this->PlayerSpecAttackDamage . " points de dégats à " . $this->EnemyInfos;
                         $this->EnemyHpF = $this->EnemyHp - $this->PlayerSpecAttackDamage;
@@ -498,7 +634,7 @@
                                     break;
                             };
                         }
-                    } elseif ($this->EnemyBlockState == 1) {
+                    } elseif ($this->EnemyBlockState == 1) { // here we create a condition that will check if the enemy is blocking or not
                         echo $this->EnemyInfos . " a utilisé sa defense.";
                         $this->EnemyBlockState = 0;
                         $this->Pass();
@@ -507,7 +643,7 @@
                     }
                     break;
                 case 3:
-                    $this->PlayerBlockState = 1;
+                    $this->PlayerBlockState = 1; // here we create a variable that will be used to know if the player is blocking or not
                     if ($this->EnemyHp >= 0) {
                         $this->Enemy();
                     } else {
@@ -523,7 +659,7 @@
                     break;
             }
         }
-        public function VilainFightEngine() {
+        public function VilainFightEngine() { // here we create the function that will start the fight engine
             switch ($this->LuckId) {
                 case 0:
                     while ($this->PlayerHp >= 0) {
@@ -532,7 +668,7 @@
                         $this->Enemy();
                     }
                     break;
-                case 1:
+                case 1: // here we create a condition that will check if the enemy is dead or not
                     while ($this->PlayerHp >= 0) {
                         if ($this->EnemyHp <= 0) {
                             $this->CleanCmd();
@@ -551,7 +687,7 @@
                     }
                 }
         }
-        public function HeroFightEngine() {
+        public function HeroFightEngine() { // here we create the function that will start the fight engine
             switch ($this->LuckId) {
                 case 0:
                     while ($this->PlayerHp >= 0) {
@@ -560,11 +696,11 @@
                         $this->Enemy();
                     }
                     break;
-                case 1:
+                case 1:     // here we create a condition that will check if the enemy is dead or not
                     while ($this->PlayerHp >= 0) {
                         if ($this->EnemyHp <= 0) {
                             $this->CleanCmd();
-                            echo "Vous avez battu " . $this->EnemyInfos . " !";
+                            echo "Vous avez battu " . $this->EnemyInfos . " !"; // here we create a condition that will check if the enemy is dead or not
                             unset($this->BddHero[$this->EnemyMainId]);
                             $this->Pass();
                             $this->CurrentEnemyChara = array();
@@ -579,9 +715,9 @@
                     }
                 }
         }
-        public function PlayerDie() {
+        public function PlayerDie() { // here we create the function that will be used when the player dies
             $this->CleanCmd();
-            echo "VOUS ÊTES MORT !";
+            echo "VOUS ÊTES MORT !";    // here we create a condition that will check if the enemy is dead or not
             $this->Pass();
             $this->Game->Engine();
         }
@@ -590,13 +726,12 @@
 
 
     // MENUMANAGER ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+        // here we create the class MenuManager where we will create the menu of the game
     class MenuManager extends GameEngine {
         public $PlayerSelection;
         public function __construct() {
         }
-        public function Engine() {
+        public function Engine() { // here we create the function that will start the game
             $this->CleanCmd();
             $this->AsciiType = 0;
             $this->AsciiEngine();
@@ -609,6 +744,7 @@
             $this->Input();
             $this->MainMenu();
         }
+        // here we create the function that will start the game
         public function MainMenu() {
             switch ($this->PlayerSelection) {
                 case 1:
@@ -624,8 +760,9 @@
                     break;
             }
         }
+        // here we create the function that will start the game  
         public function BddMenu() {
-            switch ($this->PlayerSelection) {
+            switch ($this->PlayerSelection) {   // here we create the function that will start the game
                 case 1:
                     $this->CleanCmd();
                     echo "Hero ou vilain (h/v) ?\n";
@@ -667,7 +804,7 @@
                         'CharaBlockDamage' => $this->CharaBlockDamage,
                         'CharaLevel' => $this->CharaLevel,
                     );
-                    $this->CharaBdd[] = $TempBdd;
+                    $this->CharaBdd[] = $TempBdd; // here we create the function that will start the game
                     $this->CleanCmd();
                     $this->AsciiType = 2;
                     $this->AsciiEngine();
@@ -677,7 +814,7 @@
                     $this->BddMenu();
                     break;
                 case 2:
-                    $this->CleanCmd();
+                    $this->CleanCmd(); // here we create the function that will start the game
                     print_r($this->CharaBdd);
                     echo "\nTaper le numéro CharaId à supprimer > ";
                     $RemoveId = readline("> ");
