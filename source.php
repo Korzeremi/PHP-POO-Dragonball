@@ -586,11 +586,10 @@
             }
         }
         public function Sauvegarde() {
-            fwrite($this->PlayerTempSaveFile,$this->PlayerInfos,$this->PlayerHp,$this->PlayerLevel,$this->PlayerAttack,$this->PlayerAttackDamage);
+            $data = $this->PlayerInfos . ',' . $this->PlayerHp . ',' . $this->PlayerLevel . ',' . $this->PlayerAttack . ',' . $this->PlayerAttackDamage;
+            fwrite($this->PlayerTempSaveFile, $data);
             fclose($this->PlayerTempSaveFile);
-            $this->PlayerTempSaveFile = fopen("PlayerTempSaveFile.txt","w");
-            
-
+            $this->PlayerTempSaveFile = fopen("PlayerTempSaveFile.txt", "w");
         }
         //cette fonction permet de ajoute un personnage de du fichier file.txt dans la bdd quand ton ennemie est mort
         public function AddCharaBdd() {
