@@ -598,13 +598,7 @@
             // here we add the character in the bdd
             $this->CharaBdd[] = file_get_contents('file.txt');
 
-    
-
-           
-
-        
-
-        }
+ }
     }
 
 
