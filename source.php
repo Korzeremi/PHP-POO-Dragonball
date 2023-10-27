@@ -437,11 +437,11 @@
         }
         // here we define the methods of the display
         public function Pass() {
-            $Pass = readline("");
+            $Pass = strtolower(readline(""));
         }
         // this function is used to get the input of the player
         public function Input() {
-            $this->PlayerSelection = readline("                                        Votre sélection > ");
+            $this->PlayerSelection =  strtolower(readline("                                        Votre sélection > "));
         }
         //this function is used to clear the console
         public function CleanCmd() {
@@ -498,7 +498,7 @@
         public function PlayerSelection() {
             $this->CleanCmd();
                     echo "Souhaitez-vous jouer un héros ou un vilain ? (h/v) \n";
-                    $this->PlayerType = readline("> "); 
+                    $this->PlayerType = strtolower(readline("> ")); 
                     foreach ($this->CharaBdd as $element) {
                         if ($element['CharaTypeState'] === "h") {
                             array_push($this->BddHero,$element);
@@ -708,7 +708,7 @@
             $this->CleanCmd(); // here we clear the console
             echo "Que voulez-vous faire ? \n";
             echo "1. Attaque normale\n2. Attaque spéciale\n3. Défense";
-            $PlayerChoice = readline("> "); // here we get the input of the player
+            $PlayerChoice = strtolower(readline("> ")); // here we get the input of the player
             switch ($PlayerChoice) { // here we have the player's actions
                 case 1:
                     if ($this->EnemyBlockState == 0) { // here we check if the enemy is blocking 
