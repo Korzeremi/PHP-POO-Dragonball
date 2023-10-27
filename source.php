@@ -160,10 +160,10 @@
             }
         }
         public function Pass() {
-            $Pass = readline("");
+            $Pass = strtolower(readline(""));
         }
         public function Input() {
-            $this->PlayerSelection = readline("                                        Votre sélection > ");
+            $this->PlayerSelection =  strtolower(readline("                                        Votre sélection > "));
         }
         public function CleanCmd() {
             popen("cls","w");
@@ -175,12 +175,15 @@
 
 
     class GameEngine extends DisplayEngine {
+        public $Game;
         public $PlayerTempSaveFile;
         public $PlayerXp; //A Part
         public $PlayerType;
         public $PlayerId;
         public $PlayerHp;
+        public $PlayerHpF;
         public $PlayerLevel;
+        public $PlayerFinalType;
         public $PlayerInfos;
         public $PlayerAttack;
         public $PlayerAttackDamage;
@@ -188,11 +191,12 @@
         public $PlayerSpecAttackDamage;
         public $PlayerBlock;
         public $PlayerBlockDamage;
-        public $PlayerBlockState = 0;
+        public $PlayerBlockState;
         public $EnemyLevel;
         public $EnemyId;
         public $EnemyMainId;
         public $EnemyHp;
+        public $EnemyHpF;
         public $EnemyInfos;
         public $EnemyType;
         public $EnemyAttack;
@@ -202,7 +206,7 @@
         public $EnemySpecAttackDamage;
         public $EnemyBlock;
         public $EnemyBlockDamage;
-        public $EnemyBlockState = 0;
+        public $EnemyBlockState;
         public $BddVilainNb;
         public $BddVilainNbArray = array();
         public $BddHeroNbArray = array();
@@ -213,12 +217,13 @@
         public $BddHero = array();
         public $CurrentPlayerChara = array();
         public $CurrentEnemyChara = array();
-        public function __construct() {
+        public function __construct($Game) {
+            $this->Game = new MenuManager();
         }
         public function PlayerSelection() {
             $this->CleanCmd();
                     echo "Souhaitez-vous jouer un héros ou un vilain ? (h/v) \n";
-                    $this->PlayerType = readline("> "); 
+                    $this->PlayerType = strtolower(readline("> ")); 
                     foreach ($this->CharaBdd as $element) {
                         if ($element['CharaTypeState'] === "h") {
                             array_push($this->BddHero,$element);
@@ -230,19 +235,22 @@
                     }
                     switch ($this->PlayerType) {
                         case "h":
+                            $this->PlayerFinalType = "h";
                             $RandomNb = rand(0,$this->BddHeroNb-1);
                             $this->CurrentPlayerChara[] = $this->BddHero[$RandomNb];
+                            $this->CleanCmd();
                             $this->HeroPlayer();
                             break;
                         case "v":
+                            $this->PlayerFinalType = "h";
                             $RandomNb = rand(0,$this->BddVilainNb-1);
                             $this->CurrentPlayerChara[] = $this->BddVilain[$RandomNb];
+                            $this->CleanCmd();
                             $this->VilainPlayer();
                             break;
                     }
         }
         public function HeroSpawner() {
-            $this->Pass();
             foreach ($this->BddHero as $element) {
                 $Nb = $element['CharaId'];
                 array_push($this->BddHeroNbArray,$Nb);
@@ -252,8 +260,8 @@
             $this->CleanCmd();
             $Id = $this->BddHeroNbArray[$this->BddRand];
             $this->CurrentEnemyChara[] = $this->BddHero[$Id];
-            print_r($this->CurrentEnemyChara);
-            $this->Pass();
+            $this->ReceiveEnemyInfos();
+            $this->EnemyIntro();
         }
         public function VilainSpawner() {
             foreach ($this->BddVilain as $element) {
@@ -265,8 +273,8 @@
             $this->CleanCmd();
             $Id = $this->BddVilainNbArray[$this->BddRand];
             $this->CurrentEnemyChara[] = $this->BddVilain[$Id];
-            print_r($this->CurrentEnemyChara);
-            $this->Pass();
+            $this->ReceiveEnemyInfos();
+            $this->EnemyIntro();
         }
         public function EnemyIntro() {
             $this->CleanCmd();
@@ -324,9 +332,10 @@
                     $this->CleanCmd();
                     echo $this->EnemyInfos . " vous attaque avec " . $this->EnemyAttack . " et vous inflige " . $this->EnemyAttackDamage . " points de dégats."; 
                     $this->Pass();
-                    $this->PlayerHp = $this->PlayerHp - $this->EnemyAttackDamage;
+                    $this->PlayerHpF = $this->PlayerHp - $this->EnemyAttackDamage;
                     $this->CleanCmd();
-                    echo "Vous avez " . $this->PlayerHp . " points de vie";
+                    echo "Vous avez " . $this->PlayerHpF . " points de vie";
+                    $this->PlayerHp = $this->PlayerHpF;
                     $this->Pass();
                     $this->VilainFightEngine();
                     break;
@@ -335,11 +344,12 @@
                     $this->CleanCmd();
                     echo "Vous attaquez " . $this->EnemyInfos . " avec " . $this->PlayerAttack . " et effectué " . $this->PlayerAttackDamage . " points de dégats";
                     $this->Pass();
-                    $this->EnemyHp = $this->EnemyHp - $this->PlayerAttackDamage;
+                    $this->EnemyHpF = $this->EnemyHp - $this->PlayerAttackDamage;
                     $this->CleanCmd();
-                    echo "La vie de " . $this->EnemyInfos . " est à " . $this->EnemyHp;
-                    echo $this->EnemyMainId;
+                    echo "La vie de " . $this->EnemyInfos . " est à " . $this->EnemyHpF;
+                    $this->EnemyHp = $this->EnemyHpF;
                     $this->Pass();
+                    echo $this->EnemyMainId;
                     $this->VilainFightEngine();
                     break;                    
                 }
@@ -364,9 +374,10 @@
                     $this->CleanCmd();
                     echo $this->EnemyInfos . " vous attaque avec " . $this->EnemyAttack . " et vous inflige " . $this->EnemyAttackDamage . " points de dégats."; 
                     $this->Pass();
-                    $this->PlayerHp = $this->PlayerHp - $this->EnemyAttackDamage;
+                    $this->PlayerHpF = $this->PlayerHp - $this->EnemyAttackDamage;
                     $this->CleanCmd();
-                    echo "Vous avez " . $this->PlayerHp . " points de vie";
+                    echo "Vous avez " . $this->PlayerHpF . " points de vie";
+                    $this->PlayerHp = $this->PlayerHpF;
                     $this->Pass();
                     $this->HeroFightEngine();
                     break;
@@ -375,11 +386,12 @@
                     $this->CleanCmd();
                     echo "Vous attaquez " . $this->EnemyInfos . " avec " . $this->PlayerAttack . " et effectué " . $this->PlayerAttackDamage . " points de dégats";
                     $this->Pass();
-                    $this->EnemyHp = $this->EnemyHp - $this->PlayerAttackDamage;
+                    $this->EnemyHpF = $this->EnemyHp - $this->PlayerAttackDamage;
                     $this->CleanCmd();
-                    echo "La vie de " . $this->EnemyInfos . " est à " . $this->EnemyHp;
-                    echo $this->EnemyMainId;
+                    echo "La vie de " . $this->EnemyInfos . " est à " . $this->EnemyHpF;
+                    $this->EnemyHp = $this->EnemyHpF;
                     $this->Pass();
+                    echo $this->EnemyMainId;
                     $this->HeroFightEngine();
                     break;                    
                 }
@@ -388,59 +400,128 @@
         public function Enemy() {
             $this->EnemyChoice = rand(0,2);
             $this->CleanCmd();
+            echo "Au tour de l'ennemi : " . $this->EnemyInfos . "\nIl a " . $this->EnemyHp . " points de vie.\n";
             switch ($this->EnemyChoice) {
                 case 0:
-                    if ($this->PlayerBlockState = 0) {
+                    $this->EnemyBlockState = 0;
+                    if ($this->PlayerHp <= 0) {
+                        $this->PlayerDie();
+                    } elseif ($this->PlayerBlockState === 0) {
                         $this->EnemyBlockState = 0;
                         echo $this->EnemyInfos . " vous attaque avec " . $this->EnemyAttack . " et vous inflige " . $this->EnemyAttackDamage . " points de dégats.\n";
+                        $this->Pass();
                         $this->PlayerHp = $this->PlayerHp - $this->PlayerAttackDamage;
-                        if ($this->PlayerHp <= 0) {
-                            $this->PlayerDie();
-                        }
-                    } elseif ($this->PlayerBlockState = 1) {
+                        $this->Player();
+                    } elseif ($this->PlayerBlockState === 1) {
                         echo $this->EnemyInfos . " a essayé de vous attaquer mais vous l'avez évité !";
-                        $this->PlayerBlockState = 0;
+                        $this->Pass();
+                        $this->EnemyBlockState = 0;
+                        $this->Player();
                     }
                     break;
                 case 1:
-                    echo $this->EnemyInfos . " utilise la défense " . $this->EnemyBlock . " lors du prochain tour !";
                     $this->EnemyBlockState = 1;
+                    if ($this->PlayerHp <= 0) {
+                        $this->PlayerDie();
+                    }
+                    echo $this->EnemyInfos . " utilise la défense " . $this->EnemyBlock . " lors du prochain tour !";
+                    $this->Pass();
+                    $this->EnemyBlockState = 1;
+                    $this->Player();
                     break;
                 case 2:
                     $this->EnemyBlockState = 0;
-                    echo $this->PlayerInfos . " ne fait rien et passe son tour";
+                    if ($this->PlayerHp <= 0) {
+                        $this->PlayerDie();
+                    }
+                    $this->EnemyBlockState = 0;
+                    echo $this->EnemyInfos . " ne fait rien et passe son tour";
+                    $this->Pass();
+                    $this->Player();
                     break;
             }
         }
         public function Player() {
+            if($this->PlayerHp <= 0){
+                $this->PlayerDie();
+            }
             $this->CleanCmd();
-            echo "Que voulez-vous faire ? \n";
+            echo "Au tour du joueur : " . $this->PlayerInfos;
+            echo "\n Vous avez " . $this->PlayerHp . " points de vie.";
+            echo "\nQue voulez-vous faire ? \n";
             echo "1. Attaque normale\n2. Attaque spéciale\n3. Défense";
-            $PlayerChoice = readline("> ");
-            switch ($PlayerChoice) {
+            $PlayerChoice = readline("> "); // here we get the input of the player
+            switch ($PlayerChoice) { // here we have the player's actions
                 case 1:
+                    $this->PlayerBlockState = 0;
                     if ($this->EnemyBlockState == 0) {
                         echo "\nVous utilisez votre attaque (" . $this->PlayerAttack . ") et infligez " . $this->PlayerAttackDamage . " points de dégats à " . $this->EnemyInfos;
-                        $this->EnemyHp = $this->EnemyHp - $this->PlayerAttackDamage;
-                    } else {
+                        $this->EnemyHpF = $this->EnemyHp - $this->PlayerAttackDamage;
+                        $this->EnemyHp = $this->EnemyHpF;
+                        $this->Pass();
+                        if ($this->EnemyHp > 0) {
+                            $this->Enemy();
+                        } elseif ($this->EnemyHp <= 0){
+                            switch ($this->PlayerFinalType) {
+                                case "h":
+                                    $this->VilainSpawner();
+                                    break;
+                                case "v":
+                                    $this->HeroSpawner();
+                                    break;
+                            };
+                        }
+                    } elseif ($this->EnemyBlockState == 1) {
                         echo $this->EnemyInfos . " a utilisé sa defense.";
                         $this->EnemyBlockState = 0;
+                        $this->Pass();
+                        $this->CleanCmd();
+                        $this->Enemy();
                     }
                     break;
                 case 2:
+                    $this->PlayerBlockState = 0;
                     if ($this->EnemyBlockState == 0) {
                         echo "\nVous utilisez votre attaque spéciale (" . $this->PlayerSpecAttack . ") et infligez " . $this->PlayerSpecAttackDamage . " points de dégats à " . $this->EnemyInfos;
-                        $this->EnemyHp = $this->EnemyHp - $this->PlayerSpecAttackDamage;
-                    } else {
+                        $this->EnemyHpF = $this->EnemyHp - $this->PlayerSpecAttackDamage;
+                        $this->EnemyHp = $this->EnemyHpF;
+                        $this->Pass();
+                        if ($this->EnemyHp > 0) {
+                            $this->Enemy();
+                        } elseif ($this->EnemyHp <= 0){
+                            switch ($this->PlayerFinalType) {
+                                case "h":
+                                    $this->VilainSpawner();
+                                    break;
+                                case "v":
+                                    $this->HeroSpawner();
+                                    break;
+                            };
+                        }
+                    } elseif ($this->EnemyBlockState == 1) {
                         echo $this->EnemyInfos . " a utilisé sa defense.";
                         $this->EnemyBlockState = 0;
+                        $this->Pass();
+                        $this->CleanCmd();
+                        $this->Enemy();
                     }
                     break;
                 case 3:
                     $this->PlayerBlockState = 1;
+                    if ($this->EnemyHp >= 0) {
+                        $this->Enemy();
+                    } else {
+                        switch ($this->PlayerFinalType) {
+                            case "h":
+                                $this->VilainSpawner();
+                                break;
+                            case "v":
+                                $this->HeroSpawner();
+                                break;
+                        };
+                }
                     break;
             }
-            $this->Pass();
         }
         public function VilainFightEngine() {
             switch ($this->LuckId) {
@@ -457,6 +538,7 @@
                             $this->CleanCmd();
                             echo "Vous avez battu " . $this->EnemyInfos . " !";
                             unset($this->BddVilain[$this->EnemyMainId]);
+                            $this->Pass();
                             $this->CurrentEnemyChara = array();
                             $this->VilainSpawner();
                             $this->ReceiveEnemyInfos();
@@ -484,6 +566,7 @@
                             $this->CleanCmd();
                             echo "Vous avez battu " . $this->EnemyInfos . " !";
                             unset($this->BddHero[$this->EnemyMainId]);
+                            $this->Pass();
                             $this->CurrentEnemyChara = array();
                             $this->HeroSpawner();
                             $this->ReceiveEnemyInfos();
@@ -500,6 +583,7 @@
             $this->CleanCmd();
             echo "VOUS ÊTES MORT !";
             $this->Pass();
+            $this->Game->Engine();
         }
         }
     
