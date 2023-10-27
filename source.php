@@ -160,10 +160,10 @@
             }
         }
         public function Pass() {
-            $Pass = readline("");
+            $Pass = strtolower(readline(""));
         }
         public function Input() {
-            $this->PlayerSelection = readline("                                        Votre sélection > ");
+            $this->PlayerSelection =  strtolower(readline("                                        Votre sélection > "));
         }
         public function CleanCmd() {
             popen("cls","w");
@@ -221,7 +221,7 @@
         public function PlayerSelection() {
             $this->CleanCmd();
                     echo "Souhaitez-vous jouer un héros ou un vilain ? (h/v) \n";
-                    $this->PlayerType = readline("> "); 
+                    $this->PlayerType = strtolower(readline("> ")); 
                     foreach ($this->CharaBdd as $element) {
                         if ($element['CharaTypeState'] === "h") {
                             array_push($this->BddHero,$element);
@@ -445,8 +445,8 @@
             echo "\n Vous avez " . $this->PlayerHp . " points de vie.";
             echo "\nQue voulez-vous faire ? \n";
             echo "1. Attaque normale\n2. Attaque spéciale\n3. Défense";
-            $PlayerChoice = readline("> ");
-            switch ($PlayerChoice) {
+            $PlayerChoice = readline("> "); // here we get the input of the player
+            switch ($PlayerChoice) { // here we have the player's actions
                 case 1:
                     $this->PlayerBlockState = 0;
                     if ($this->EnemyBlockState == 0) {
