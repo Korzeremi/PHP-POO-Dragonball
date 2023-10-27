@@ -1,382 +1,493 @@
 <?php
-//here we created a class perso where we define the caracteristics of the characters
-    class Perso {
-        public $PersoId;
-        public $PersoPv;
-        public $PersoInfos;
-        public $PersoPower;
-        public $PersoAttack;
-        public $PersoState = 0; // débloqué ou non
-
-        public function __construct($Pv,$PersoId,$PersoPv,$PersoInfos,$PersoPower,$PersoAttack,$PersoState) {
-            $this->PersoId = $PersoId;
-            $this->PersoPv = $PersoPv;
-            $this->PersoInfos = $PersoInfos;
-            $this->PersoAttack = $PersoAttack;
-            $this->PersoPower = $PersoPower;
-            $this->PersoState = $PersoState;
-        }
-
-    }
 
 
+    // CHARACTER ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-// here we created a class hero where we define the caracteristics of the heroes
-    class Hero extends Perso {
-        public $HeroId = 0;
-        public $HeroPv = array(400,333,250);
-        public $HeroInfos = array("goku","vegeta","piccolo");
-        public $HeroPower = array(23,14,10);
-        public $HeroAttack = array("kamehameha","finalflash","makankosappo"); // attaque spéciale
-        public $SpecialAttackDamage = array(100,80,60); // dégats de l'attaque spéciale
-        public $AttackBlock = array("kaioken","finalflash","makankosappo");
-        public $AttackBlockDamage = array(50,40,30);
-
-
-        public function __construct($HeroId,$HeroPv,$HeroInfos,$HeroPower,$HeroAttack,$SpecialAttackDamage,$AttackBlock,$AttackBlockDamage) {
-            $this->HeroId = $HeroId;
-            $this->HeroPv = $HeroPv;
-            $this->HeroInfos = $HeroInfos;
-            $this->HeroPower = $HeroPower;
-            $this->HeroAttack = $HeroAttack;
-            $this->SpecialAttackDamage = $SpecialAttackDamage;
-            $this->AttackBlock = $AttackBlock;
-            $this->AttackBlockDamage = $AttackBlockDamage;
-        }
-
-        public function getHeroId() {
-            return $this->HeroId;
-        }
-        public function getHeroPv() {
-            return $this->HeroPv;
-        }
-        public function getHeroInfos() {
-            return $this->HeroInfos;
-        }
-        public function getHeroPower() {
-            return $this->HeroPower;
-        }
-        public function getHeroAttack() {
-            return $this->HeroAttack;
-        }
-        public function getSpecialAttackDamage() {
-            return $this->SpecialAttackDamage;
-        }
-        public function getAttackBlock() {
-            return $this->AttackBlock;
-        }
-        public function getAttackBlockDamage() {
-            return $this->AttackBlockDamage;
-        }
-        public function setHeroId($Heroid) {
-            $this->HeroId = $Heroid;
-        }
-        public function setHeroPv($HeroPv) {
-            $this->HeroPv = $HeroPv;
-        }
-        public function setHeroInfos ($HeroInfos) {
-            $this->HeroInfos = $HeroInfos;
-        }
-        public function setHeroPower($HeroPower) {
-            $this->HeroPower = $HeroPower;
-        }
-        public function setHeroAttack($HeroAttack) {
-            $this->HeroAttack = $HeroAttack;
-        }
-        public function setSpecialAttackDamage($SpecialAttackDamage) {
-            $this->SpecialAttackDamage = $SpecialAttackDamage;
-        }
-        public function setAttackBlock($AttackBlock) {
-            $this->AttackBlock = $AttackBlock;
-        }
-        public function setAttackBlockDamage($AttackBlockDamage) {
-            $this->AttackBlockDamage = $AttackBlockDamage;
+    class Character {
+        public $CharaBdd = array(
+            array(
+                'CharaId' => 0,
+                'CharaTypeState' => "h",
+                'CharaInfos' => "Goku",
+                'CharaHp' => 100,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 1,
+                'CharaTypeState' => "h",
+                'CharaInfos' => "Goku2",
+                'CharaHp' => 100,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 250,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 50,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 50,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 0,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Vegeta",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 1,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Vegeto",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            ),
+            array(
+                'CharaId' => 2,
+                'CharaTypeState' => "v",
+                'CharaInfos' => "Vegeti",
+                'CharaHp' => 125,
+                'CharaAttack' => "Attack",
+                'CharaAttackDamage' => 30,
+                'CharaSpecAttack' => "SpecialAttack",
+                'CharaSpecAttackDamage' => 75,
+                'CharaBlock' => "Defence",
+                'CharaBlockDamage' => 25,
+                'CharaLevel' => 1,
+            )
+        );
+        public $CharaId;
+        public $CharaHp;
+        public $CharaLevel;
+        public $CharaInfos;
+        public $CharaAttack;
+        public $CharaAttackDamage;
+        public $CharaSpecAttack;
+        public $CharaSpecAttackDamage;
+        public $CharaBlock;
+        public $CharaBlockDamage;
+        public $CharaNpcState;
+        public $CharaTypeState;
+        public $CharaState;
+        public function __construct() {
         }
     }
 
 
+    // DISPLAYENGINE -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+    class DisplayEngine extends Character {
+        public $AsciiType = 1;
+        public $AsciiReg;
+        public function __construct($AsciiType,$AsciiReg) {
+            $this->AsciiType = $AsciiType;
+            $this->AsciiReg = $AsciiReg;
+        }
+        public function AsciiEngine() {
+            switch ($this->AsciiType) {
+                case 0:
+                    $this->AsciiReg = "
+                    ______                                   ______         _  _ 
+                    |  _  \                                  | ___ \       | || |
+                    | | | | _ __   __ _   __ _   ___   _ __  | |_/ /  __ _ | || |
+                    | | | || '__| / _` | / _` | / _ \ | '_ \ | ___ \ / _` || || |
+                    | |/ / | |   | (_| || (_| || (_) || | | || |_/ /| (_| || || |
+                    |___/  |_|    \__,_| \__, | \___/ |_| |_|\____/  \__,_||_||_|
+                                          __/ |                                  
+                                         |___/                                                                          
+                    
+                                   2023 - Ilyas et Rémi - BTC2-25.1
 
-// here we created a class vilain where we define the caracteristics of the vilains
-    class Vilain extends Perso {
-        public $VilainId;
-        public $VilainPv = array(503,233,350);
-        public $VilainInfos = array("freeazer","cell","Magin buu");  
-        public $VilainAttack = array("deathball","kamehameha","finalflash");     // attaque spéciale
-        public $VilainSpecialAttackDamage = array(100,80,60); // dégats de l'attaque spéciale
-        public $VilainPower= array(26,17,12); // puissance de l'attaque spéciale
-        public $VilainAttackBloque = array("key blast","absorption","vaporize");
-        public $VilainAttackBloqueDamage = array(50,40,70);
+                                          Appuyer sur Entrée
+                   
+                    ";
+                    break;
+                case 1:
+                    $this->AsciiReg = "
+                    ______                                   ______         _  _ 
+                    |  _  \                                  | ___ \       | || |
+                    | | | | _ __   __ _   __ _   ___   _ __  | |_/ /  __ _ | || |
+                    | | | || '__| / _` | / _` | / _ \ | '_ \ | ___ \ / _` || || |
+                    | |/ / | |   | (_| || (_| || (_) || | | || |_/ /| (_| || || |
+                    |___/  |_|    \__,_| \__, | \___/ |_| |_|\____/  \__,_||_||_|
+                                          __/ |                                  
+                                         |___/                                                                          
+                    
 
-        public function __construct($VilainId,$VilainPv,$VilainAttack,$VilainInfos,$VilainPower,$VilainSpecialAttackDamage,$VilainAttackBloque,$VilainAttackBloqueDamage) {
-            $this->VilainId = $VilainId;
-            $this->VilainPv = $VilainPv;
-            $this->VilainAttack = $VilainAttack;
-            $this->VilainInfos = $VilainInfos;
-            $this->VilainPower= $VilainPower;
-            $this->VilainSpecialAttackDamage = $VilainSpecialAttackDamage;
-            $this->VilainAttackBloque = $VilainAttackBloque;
-            $this->VilainAttackBloqueDamage = $VilainAttackBloqueDamage;
-        }
+                                            1. Jouer
+                                            2. BDD
+                                            3. Quitter            
+                                            
+                    ";
+                    break;
+                case 2:
+                    $this->AsciiReg = "
+                     _____  _____  _____  _____  _____  _____  _   _    ______ ______ ______ 
+                    |  __ \|  ___|/  ___||_   _||_   _||  _  || \ | |   | ___ \|  _  \|  _  \
+                    | |  \/| |__  \ `--.   | |    | |  | | | ||  \| |   | |_/ /| | | || | | |
+                    | | __ |  __|  `--. \  | |    | |  | | | || . ` |   | ___ \| | | || | | |
+                    | |_\ \| |___ /\__/ /  | |   _| |_ \ \_/ /| |\  |   | |_/ /| |/ / | |/ / 
+                     \____/\____/ \____/   \_/   \___/  \___/ \_| \_/   \____/ |___/  |___/  
+                                                                                             
+                                                                                             
+                                        
 
-        public function getVilainId() {
-            return $this->VilainId;
+                                            1. Ajouter personnage
+                                            2. Supprimer personnage
+                                            3. Afficher BDD
+                                            4. Formater BDD
+                                            5. Retour  
+                                            
+                    ";
+                    break;
+            }
         }
-        public function getVilainPv() {
-            return $this->VilainPv;
+        public function Pass() {
+            $Pass = readline("");
         }
-        public function getVilainAttack() {
-            return $this->VilainAttack;
+        public function Input() {
+            $this->PlayerSelection = readline("                                        Votre sélection > ");
         }
-        public function getVilainInfos() {
-            return $this->VilainInfos;
-        }
-        public function getVilainPower() {
-            return $this->VilainPower;
-        }
-        public function getVilainSpecialAttackDamage() {
-            return $this->VilainSpecialAttackDamage;
-        }
-        public function getVilainAttackBloque() {
-            return $this->VilainAttackBloque;
-        }
-        public function getVilainAttackBloqueDamage() {
-            return $this->VilainAttackBloqueDamage;
-        }
-
-        public function setVilainId($VilainId) {
-            $this->VilainId = $VilainId;
-        }
-        public function setVilainPv($VilainPv) {
-            $this->VilainPv = $VilainPv;
-        }
-        public function setVilainAttack($VilainAttack) {
-            $this->VilainAttack = $VilainAttack;
-        }
-        public function setVilainInfos($VilainInfos) {
-            $this->VilainInfos = $VilainInfos;
-        }
-        public function setVilainPower($VilainPower) {
-            $this->VilainPower = $VilainPower;
-        }
-        public function setVilainSpecialAttackDamage($VilainSpecialAttackDamage) {
-            $this->VilainSpecialAttackDamage = $VilainSpecialAttackDamage;
-        }
-        public function setVilainAttackBloque($VilainAttackBloque) {
-            $this->VilainAttackBloque = $VilainAttackBloque;
-        }
-        public function setVilainAttackBloqueDamage($VilainAttackBloqueDamage) {
-            $this->VilainAttackBloqueDamage = $VilainAttackBloqueDamage;
+        public function CleanCmd() {
+            popen("cls","w");
         }
     }
 
 
+    // GAMEENGINE ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-    class Menu extends Perso {
-        private $Hero;
-        private $Vilain;
-        public $UserPlace;
-        public $UserSelection;
-        public $TempSaveFile;
-        public $CharaType;
-        public $CharaSelection;
-        public $HeroC;
-        public function __construct($UserPlace,$UserSelection,$CharaSelection) {
-            $this->UserPlace = $UserPlace;
-            $this->UserSelection = $UserSelection;
-            $this->CharaSelection = $CharaSelection;
-            $this->Hero = new Hero(0,0,0,0,0,0,0,0);
-            $this->Vilain = new Vilain(0,0,0,0,0,0,0,0);
+    class GameEngine extends DisplayEngine {
+        public $PlayerTempSaveFile;
+        public $PlayerXp; //A Part
+        public $PlayerType;
+        public $PlayerId;
+        public $PlayerHp;
+        public $PlayerLevel;
+        public $PlayerInfos;
+        public $PlayerAttack;
+        public $PlayerAttackDamage;
+        public $PlayerSpecAttack;
+        public $PlayerSpecAttackDamage;
+        public $PlayerBlock;
+        public $PlayerBlockDamage;
+        public $EnemyLevel;
+        public $EnemyId;
+        public $EnemyMainId;
+        public $EnemyHp;
+        public $EnemyInfos;
+        public $EnemyType;
+        public $EnemyAttack;
+        public $EnemyAttackDamage;
+        public $EnemySpecAttack;
+        public $EnemySpecAttackDamage;
+        public $EnemyBlock;
+        public $EnemyBlockDamage;
+        public $BddVilainNb;
+        public $BddHeroNb;
+        public $BddVilain = array();
+        public $BddHero = array();
+        public $CurrentPlayerChara = array();
+        public $CurrentEnemyChara = array();
+        public function __construct() {
         }
-        public function MenuManager() {
+        public function PlayerSelection() {
+            $this->CleanCmd();
+                    echo "Souhaitez-vous jouer un héros ou un vilain ? (h/v) \n";
+                    $this->PlayerType = readline("> "); 
+                    foreach ($this->CharaBdd as $element) {
+                        if ($element['CharaTypeState'] === "h") {
+                            array_push($this->BddHero,$element);
+                            $this->BddHeroNb++;
+                        } elseif ($element['CharaTypeState'] === "v") {
+                            array_push($this->BddVilain,$element);
+                            $this->BddVilainNb++;
+                        }
+                    }
+                    switch ($this->PlayerType) {
+                        case "h":
+                            $RandomNb = rand(0,$this->BddHeroNb-1);
+                            $this->CurrentPlayerChara[] = $this->BddHero[$RandomNb];
+                            $this->HeroPlayer();
+                            break;
+                        case "v":
+                            $RandomNb = rand(0,$this->BddVilainNb-1);
+                            $this->CurrentPlayerChara[] = $this->BddVilain[$RandomNb];
+                            $this->VilainPlayer();
+                            break;
+                    }
+        }
+        public function VilainSpawner() {
+            $BddVilainNbV = 0;
+            foreach ($this->BddVilain as $element) {
+                $BddVilainNbV++;
+            }
+            // $RandomNbV = rand(0,$BddVilainNbV);
+            $this->CurrentEnemyChara[] = $this->BddVilain[$BddVilainNbV];
+        }
+        public function ReceivePlayerInfos() {
+            foreach ($this->CurrentPlayerChara as $element) {
+                $this->PlayerLevel = $element['CharaLevel'];
+                $this->PlayerId = $element['CharaId'];
+                $this->PlayerHp = $element['CharaHp'];
+                $this->PlayerInfos = $element['CharaInfos'];
+                $this->PlayerType = $element['CharaTypeState'];
+                $this->PlayerAttack = $element['CharaAttack'];
+                $this->PlayerAttackDamage = $element['CharaAttackDamage'];
+                $this->PlayerSpecAttack = $element['CharaSpecAttack'];
+                $this->PlayerSpecAttackDamage = $element['CharaSpecAttackDamage'];
+                $this->PlayerBlock = $element['CharaBlock'];
+                $this->PlayerBlockDamage = $element['CharaBlockDamage'];
+            }
+        }
+        public function ReceiveEnemyInfos() {
+            foreach ($this->CurrentEnemyChara as $element2) {
+                $this->EnemyLevel = $element2['CharaLevel'];
+                $this->EnemyMainId = $element2['CharaId'];
+                $this->EnemyId = count($element2);
+                $this->EnemyHp = $element2['CharaHp'];
+                $this->EnemyInfos = $element2['CharaInfos'];
+                $this->EnemyType = $element2['CharaTypeState'];
+                $this->EnemyAttack = $element2['CharaAttack'];
+                $this->EnemyAttackDamage = $element2['CharaAttackDamage'];
+                $this->EnemySpecAttack = $element2['CharaSpecAttack'];
+                $this->EnemySpecAttackDamage = $element2['CharaSpecAttackDamage'];
+                $this->EnemyBlock = $element2['CharaBlock'];
+                $this->EnemyBlockDamage = $element2['CharaBlockDamage'];
+            }
+
+        }
+        public function HeroPlayer() {
+            $this->ReceivePlayerInfos();
+            echo "Vous jouer " . $this->PlayerInfos . ", disposant de " . $this->PlayerHp . " points de vie (HP).\n";
+            echo "Son attaque principale est " . $this->PlayerAttack . " qui effectuera " . $this->PlayerAttackDamage . " points de dégats\n";
+            echo "Son attaque spéciale est " . $this->PlayerSpecAttack . " qui effectuera " . $this->PlayerSpecAttackDamage . " points de dégats\n";
+            echo "Sa defense est " . $this->PlayerBlock . " qui effectuera " . $this->PlayerBlockDamage . " points de dégats en contrepartie\n";
+            echo "Votre personnage est actuellement au niveau " . $this->PlayerLevel . ".\nBattez des ennemies et des boss pour obtenir des niveaux et en débloquer de nouveaux !";
+            $this->Pass();
+            $RandomEnemy = rand(0,$this->BddVilainNb-1);
+            $this->CurrentEnemyChara[] = $this->BddVilain[$RandomEnemy];
+            $this->ReceiveEnemyInfos();
+            $this->CleanCmd();
+            echo $this->EnemyInfos . " vient d'apparaitre !";
+            $this->Pass();
+            $LuckNb = rand(0,1);
+            switch ($LuckNb) {
+                case 0:
+                    $this->CleanCmd();
+                    echo $this->EnemyInfos . " vous attaque avec " . $this->EnemyAttack . " et vous inflige " . $this->EnemyAttackDamage . " points de dégats."; 
+                    $this->Pass();
+                    $this->PlayerHp = $this->PlayerHp - $this->EnemyAttackDamage;
+                    $this->CleanCmd();
+                    echo "Vous avez " . $this->PlayerHp . " points de vie";
+                    $this->Pass();
+                    while ($this->PlayerHp >= 0) {
+                        if ($this->EnemyHp <= 0) {
+                            $this->ReceiveEnemyInfos();
+                            $this->CurrentEnemyChara = array();
+                            $this->ReceiveEnemyInfos();
+                            print_r($this->CurrentEnemyChara);
+                        }
+                    }
+                    break;
+                case 1:
+                    $this->CleanCmd();
+                    echo "Vous attaquez " . $this->EnemyInfos . " avec " . $this->PlayerAttack . " et effectué " . $this->PlayerAttackDamage . " points de dégats";
+                    $this->Pass();
+                    $this->EnemyHp = $this->EnemyHp - $this->PlayerAttackDamage;
+                    $this->CleanCmd();
+                    echo "La vie de " . $this->EnemyInfos . " est à " . $this->EnemyHp;
+                    echo $this->EnemyMainId;
+                    $this->Pass();
+                    while ($this->PlayerHp >= 0) {
+                        if ($this->EnemyHp <= 0) {
+                            unset($this->BddVilain[$this->EnemyMainId]);
+                            $this->CurrentEnemyChara = array();
+                            $this->VilainSpawner();
+                            $this->ReceiveEnemyInfos();
+                            print_r($this->CurrentEnemyChara);
+                        } else {
+
+                        }
+                        
+                    break;
+                    }
+            }
+            $this->Pass();
+        }
+        public function VilainPlayer() {
+            $this->ReceivePlayerInfos();
+            echo "Vous jouer " . $this->PlayerInfos . ", disposant de " . $this->PlayerHp . " points de vie (HP).\n";
+            echo "Son attaque principale est " . $this->PlayerAttack . " qui effectuera " . $this->PlayerAttackDamage . " points de dégats\n";
+            echo "Son attaque spéciale est " . $this->PlayerSpecAttack . " qui effectuera " . $this->PlayerSpecAttackDamage . " points de dégats\n";
+            echo "Sa defense est " . $this->PlayerBlock . " qui effectuera " . $this->PlayerBlockDamage . " points de dégats en contrepartie\n";
+            echo "Votre personnage est actuellement au niveau " . $this->PlayerLevel . ".\nBattez des ennemies et des boss pour obtenir des niveaux et en débloquer de nouveaux !";
+            $this->Pass();
+            print_r($this->BddHero);
+            }
+        }
+    
+
+
+    // MENUMANAGER ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    class MenuManager extends GameEngine {
+        public $PlayerSelection;
+        public function __construct() {
+        }
+        public function Engine() {
+            $this->CleanCmd();
+            $this->AsciiType = 0;
+            $this->AsciiEngine();
+            echo $this->AsciiReg;
+            $this->Pass();
+            $this->CleanCmd();
+            $this->AsciiType = 1;
+            $this->AsciiEngine();
+            echo $this->AsciiReg . "\n\n";
+            $this->Input();
             $this->MainMenu();
         }
         public function MainMenu() {
-            $this->UserPlace = 0;
-            popen("cls","w");
-            echo "
-______                                   ______         _  _ 
-|  _  \                                  | ___ \       | || |
-| | | | _ __   __ _   __ _   ___   _ __  | |_/ /  __ _ | || |
-| | | || '__| / _` | / _` | / _ \ | '_ \ | ___ \ / _` || || |
-| |/ / | |   | (_| || (_| || (_) || | | || |_/ /| (_| || || |
-|___/  |_|    \__,_| \__, | \___/ |_| |_|\____/  \__,_||_||_|
-                      __/ |                                  
-                     |___/                                   
-
-            \n";
-            echo "-------------------------------\n";
-            echo "Bienvenue sur le Menu principal\n";
-            echo "-------------------------------\n\n";
-            echo "1.Jouer\n2.Gérer la banque de personnages\n3.Infos\n\n4.Quitter\n\n";
-            $this->UserSelection = readline("> ");
-            switch ($this->UserSelection){
-                case 0:
-                    $hero = new Hero(0,0,0,0,0,0,0,0);
-                    $heroInfo = $hero->getHeroInfos();
-                    
-                    break;
+            switch ($this->PlayerSelection) {
                 case 1:
-                    $this->PlaySelection();
-                    $this->PlayMenu();
-                case 2:
-                    $this->CharaMenu();
+                    $this->PlayerSelection();
                     break;
-                case 3:
-                    popen("cls","w");
-                    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-                    echo "Créé par Ilyass ELYAMANI et Rémi KORZENIOWSKI\n";
-                    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-                    echo "\n";
-                    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-                    echo "            Version du 26/10/2023            \n";
-                    echo "               IPSSI BTC2-25.1               \n";
-                    echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
-                    $pass = readline("> ");
-                    $this->MainMenu();
+                case 2:
+                    $this->CleanCmd();
+                    $this->AsciiType = 2;
+                    $this->AsciiEngine();
+                    echo $this->AsciiReg . "\n\n";
+                    $this->Input();
+                    $this->BddMenu();
+                    break;
             }
         }
-        public function PlaySelection() {
-            popen("cls","w");
-            echo "Voulez-vous incarner les héros ou les vilains ?\n1.Héros\n2.Vilain\n";
-            $this->CharaSelection = readline("");
-            switch ($this->CharaSelection) {
+        public function BddMenu() {
+            switch ($this->PlayerSelection) {
                 case 1:
-                    $this->PlayHero();
+                    $this->CleanCmd();
+                    echo "Hero ou vilain (h/v) ?\n";
+                    $this->CharaTypeState = readline("> ");
+                    $this->CleanCmd();
+                    echo "Nom ?\n";
+                    $this->CharaInfos = readline("> ");
+                    $this->CleanCmd();
+                    echo "Quels sont les points de vie ?\n";
+                    $this->CharaHp = readline("> ");
+                    $this->CleanCmd();
+                    echo "Quelle est l'attaque principale du personnage ?\n";
+                    $this->CharaAttack = readline("> ");
+                    echo "\nQuels sont les points de dégats de cette attaque ? (" . $this->CharaAttack . ")\n";
+                    $this->CharaAttackDamage = readline("> ");
+                    $this->CleanCmd();
+                    echo "Quelle est l'attaque spéciale du personnage ?\n";
+                    $this->CharaSpecAttack = readline("> ");
+                    echo "\nQuels sont les points de dégats de cette attaque ? (" . $this->CharaSpecAttack . ")\n";
+                    $this->CharaSpecAttackDamage = readline("> ");
+                    $this->CleanCmd();
+                    echo "Quelle est la défense de l'utilisateur ?\n";
+                    $this->CharaBlock = readline("> ");
+                    echo "\nQuels sont les points de dégats de cette défense ? (" . $this->CharaBlock . ")\n";
+                    $this->CharaBlockDamage = readline("> ");
+                    $this->CleanCmd();
+                    echo "Quel niveau pour débloquer " . $this->CharaInfos . " ?\n";
+                    $this->CharaLevel = readline("> ");
+                    $TempBdd = array(
+                        'CharaId' => count($this->CharaBdd),
+                        'CharaTypeState' => $this->CharaTypeState,
+                        'CharaInfos' => $this->CharaInfos,
+                        'CharaHp' => $this->CharaHp,
+                        'CharaAttack' => $this->CharaAttack,
+                        'CharaAttackDamage' => $this->CharaAttackDamage,
+                        'CharaSpecAttack' => $this->CharaSpecAttack,
+                        'CharaSpecAttackDamage' => $this->CharaSpecAttackDamage,
+                        'CharaBlock' => $this->CharaBlock,
+                        'CharaBlockDamage' => $this->CharaBlockDamage,
+                        'CharaLevel' => $this->CharaLevel,
+                    );
+                    $this->CharaBdd[] = $TempBdd;
+                    $this->CleanCmd();
+                    $this->AsciiType = 2;
+                    $this->AsciiEngine();
+                    echo $this->AsciiReg . "\n\n";
+                    $this->PlayerSelection = 0;
+                    $this->Input();
+                    $this->BddMenu();
                     break;
                 case 2:
-                    //Vilain
-            }
-        }
-        public function PlayHero() {
-            
-        }
-        public function PlayMenu() {
-            popen("cls","w");
-            echo "
-______                                                                                                                       _             _     _ 
-| ___ \                                                                                                                     | |           | |   | |
-| |_/ / _ __   ___  _ __    __ _  _ __   ___  ____ ______ __   __  ___   _   _  ___    __ _  _   _    ___   ___   _ __ ___  | |__    __ _ | |_  | |
-|  __/ | '__| / _ \| '_ \  / _` || '__| / _ \|_  /|______|\ \ / / / _ \ | | | |/ __|  / _` || | | |  / __| / _ \ | '_ ` _ \ | '_ \  / _` || __| | |
-| |    | |   |  __/| |_) || (_| || |   |  __/ / /          \ V / | (_) || |_| |\__ \ | (_| || |_| | | (__ | (_) || | | | | || |_) || (_| || |_  |_|
-\_|    |_|    \___|| .__/  \__,_||_|    \___|/___|          \_/   \___/  \__,_||___/  \__,_| \__,_|  \___| \___/ |_| |_| |_||_.__/  \__,_| \__| (_)
-                   | |                                                                                                                             
-                   |_|                                                                                                                             
-
-            ";
-            sleep(1);
-            popen("cls","w");
-            echo "                
-            .--,-``-.     
-           /   /     '.   
-          / ../        ;  
-          \ ``\  .`-    ' 
-           \___\/   \   : 
-                \   :   | 
-                /  /   /  
-                \  \   \  
-            ___ /   :   | 
-           /   /\   /   : 
-          / ,,/  ',-    . 
-          \ ''\        ;  
-           \   \     .'   
-            `--`-,,-'     
-                          
-          ";
-            sleep(1);
-            popen("cls","w");
-            echo "               
-               
-            ,----,   
-          .'   .' \  
-        ,----,'    | 
-        |    :  .  ; 
-        ;    |.'  /  
-        `----'/  ;   
-          /  ;  /    
-         ;  /  /-,   
-        /  /  /.`|   
-      ./__;      :   
-      |   :    .'    
-      ;   | .'       
-      `---'          
-                     
-      ";
-            sleep(1);
-            popen("cls","w");
-            echo "           
-           
-            ,---, 
-         ,`--.' | 
-        /    /  : 
-       :    |.' ' 
-       `----':  | 
-          '   ' ; 
-          |   | | 
-          '   : ; 
-          |   | ' 
-          '   : | 
-          ;   |.' 
-          '---'   
-                  
-                  
-       ";
-            sleep(1);
-            popen("cls","w");
-            echo "  
- _____  _             _                         _    _ 
-/ ____|( )           | |                       | |  (_)
-| |     |/   ___  ___ | |_   _ __    __ _  _ __ | |_  _ 
-| |         / _ \/ __|| __| | '_ \  / _` || '__|| __|| |
-| |____    |  __/\__ \| |_  | |_) || (_| || |   | |_ | |
-\_____|    \___||___/ \__| | .__/  \__,_||_|    \__||_|
-                           | |                         
-                           |_|                         
-           ";
-           $pass = readline("> ");
-            // fonction de jeu
-        }
-        public function CharaMenu() {
-            popen("cls","w");
-            echo "DragonBall\n\n";
-            echo "---------------------\n";
-            echo "Banque de personnages\n";
-            echo "---------------------\n\n";
-            echo "1.Afficher les personnages\n2.Ajouter un personnage\n3.Réinitialiser la banque de personnage\n4.Retour au menu principal\n\n";
-            $this->UserSelection = readline("> ");
-            switch ($this->UserSelection){
-                case 1:
-                    // print tab
+                    $this->CleanCmd();
+                    print_r($this->CharaBdd);
+                    echo "\nTaper le numéro CharaId à supprimer > ";
+                    $RemoveId = readline("> ");
+                    unset($this->CharaBdd[$RemoveId]);
+                    $this->CleanCmd();
+                    echo "Le personnage a bien été supprimé\n";
+                    $this->Pass();
+                    $this->AsciiType = 2;
+                    $this->AsciiEngine();
+                    echo $this->AsciiReg . "\n\n";
+                    $this->PlayerSelection = 0;
+                    $this->Input();
+                    $this->BddMenu();
                     break;
-                case 2:
-                    echo "Que voulez-vous ajouter ?\n1.Héros\n2.Vilain\n";
-                    $this->CharaType = readline("> ");
-                    switch ($this->CharaType){
-                        case 1:
-                            // nom du heros
-                            // PV
-                            // Attaque special
-                            break;
-                        case 2:
-                            // Nom du vilain
-                            // PV
-                            // Attaque special
-                            break;
-                        }
                 case 3:
-                    // actualArray == initialArray
+                    $this->CleanCmd();
+                    print_r($this->CharaBdd);
+                    $this->Pass();
+                    $this->CleanCmd();
+                    $this->AsciiType = 2;
+                    $this->AsciiEngine();
+                    echo $this->AsciiReg . "\n\n";
+                    $this->PlayerSelection = 0;
+                    $this->Input();
+                    $this->BddMenu();
                     break;
                 case 4:
-                    $this->MainMenu();
+                    $this->CleanCmd();
+                    $this->CharaBdd = array();
+                    echo "!!!!!!!!!!!!!!BDD Formatée!!!!!!!!!!!!!!";
+                    $this->Pass();
+                    $this->CleanCmd();
+                    $this->AsciiType = 2;
+                    $this->AsciiEngine();
+                    echo $this->AsciiReg . "\n\n";
+                    $this->PlayerSelection = 0;
+                    $this->Input();
+                    $this->BddMenu();
+                    break;
+                case 5:
+                    $this->CleanCmd();
+                    $this->AsciiType = 1;
+                    $this->AsciiEngine();
+                    echo $this->AsciiReg . "\n\n";
+                    $this->PlayerSelection = readline("                                        Votre sélection > ");
+                    break;
             }
         }
     }
-    $f = new Menu(0,0,0,0);
-    $f->MenuManager();
-?>
+
+
+    // FUNCTIONS -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    $Game = new MenuManager();
+    $Game->Engine();
